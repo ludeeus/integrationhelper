@@ -4,6 +4,8 @@ import socket
 import aiohttp
 import async_timeout
 
+from integrationhelper.const import GOOD_HTTP_CODES
+
 
 class WebClient:
     """Web client."""
@@ -38,11 +40,21 @@ class WebClient:
             if self.session is not None:
                 async with async_timeout.timeout(10, loop=asyncio.get_event_loop()):
                     response = await self.session.get(url, headers=headers)
+                    if response.status not in GOOD_HTTP_CODES:
+                        self.logger.error(
+                            f"Recieved HTTP code ({response.status}) from {url}"
+                        )
+                        return jsondata
                     jsondata = await response.json()
             else:
                 async with aiohttp.ClientSession() as session:
                     async with async_timeout.timeout(10, loop=asyncio.get_event_loop()):
                         response = await session.get(url, headers=headers)
+                        if response.status not in GOOD_HTTP_CODES:
+                            self.logger.error(
+                                f"Recieved HTTP code ({response.status}) from {url}"
+                            )
+                            return jsondata
                         jsondata = await response.json()
 
             self.logger.debug(jsondata)
