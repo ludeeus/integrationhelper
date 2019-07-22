@@ -12,16 +12,11 @@ class WebClient:
         """
         Initialize.
 
-        Usage:
+        Sample Usage:
         from integrationhelper.webclient import WebClient
         url = "https://sample.com/api"
-        client = WebClient(aiohttp.ClientSession, mycustomlogger)
-        client = WebClient(aiohttp.ClientSession)
-        client = WebClient()
-        myjson = await client.async_get_json(url, headers)
-        myjson = await client.async_get_json(url)
-
-        print(myjson)
+        webclient = WebClient()
+        print(await webclient.async_get_json(url))
         """
         self.session = session
         if logger is not None:
