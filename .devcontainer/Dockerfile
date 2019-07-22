@@ -6,7 +6,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python -m pip install --upgrade colorlog black pylint
+RUN pip install --upgrade colorlog black pylint
 
 WORKDIR /workspace
 
