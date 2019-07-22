@@ -24,7 +24,7 @@ class WebClient:
         if logger is not None:
             self.logger = logger
         else:
-            from integrationhelper.logger import Logger
+            from integrationhelper import Logger
 
             self.logger = Logger(__name__)
 
