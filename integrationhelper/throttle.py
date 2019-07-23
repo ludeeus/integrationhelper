@@ -1,9 +1,9 @@
 from datetime import timedelta, datetime
 
 class Throttle:
-    """Why not."""
+    """Throttle."""
 
-    interval = timedelta(seconds=INTERVAL)
+    interval = timedelta(seconds=60)
     last_run = None
 
     def set_last_run(self):
