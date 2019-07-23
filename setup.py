@@ -11,7 +11,7 @@ setuptools.setup(
     author="Joakim Sorensen",
     author_email="ludeeus@gmail.com",
     description="A set of helpers for integrations.",
-    install_requires=["aiohttp", "async_timeout"],
+    install_requires=["aiohttp", "async_timeout", "backoff"],
     long_description=LONG,
     long_description_content_type="text/markdown",
     url="https://github.com/ludeeus/integrationhelper",
