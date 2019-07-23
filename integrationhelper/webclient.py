@@ -31,8 +31,21 @@ class WebClient:
             self.logger = Logger(__name__)
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=3)
-    async def async_get_json(self, url, custom_headers=None):
+    async def async_get_json(self, url: str, custom_headers: dict = None):
         """Get json response from server."""
+        try:
+            assert isinstance(url, str)
+        except AssertionError:
+            self.logger.error(f"({url}) is not a string.")
+            return None
+
+        try:
+            assert custom_headers is None or isinstance(custom_headers, dict)
+        except AssertionError:
+            self.logger.error(f"({custom_headers}) is not a dict.")
+            return None
+
+
         headers = {"Content-Type": "application/json"}
         if custom_headers is not None:
             for header in custom_headers:
@@ -75,8 +88,20 @@ class WebClient:
         return jsondata
 
     @backoff.on_exception(backoff.expo, Exception, max_tries=3)
-    async def async_get_text(self, url, custom_headers=None):
+    async def async_get_text(self, url: str, custom_headers: dict = None):
         """Get text response from server."""
+        try:
+            assert isinstance(url, str)
+        except AssertionError:
+            self.logger.error(f"({url}) is not a string.")
+            return None
+
+        try:
+            assert url is None or isinstance(custom_headers, dict)
+        except AssertionError:
+            self.logger.error(f"({custom_headers}) is not a dict.")
+            return None
+
         headers = {"Content-Type": "application/json"}
         if custom_headers is not None:
             for header in custom_headers:
