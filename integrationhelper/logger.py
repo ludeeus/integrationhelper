@@ -6,7 +6,7 @@ class Logger:
     """Custom logger."""
 
     def __init__(self, name="integrationhelper"):
-        self.name = name
+        self.name = name.replace("/", ".")
 
     def debug(self, message):
         """Info messages."""

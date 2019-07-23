@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="integrationhelper",
-    version="0.2.1",
+    version="0.2.2",
     author="Joakim Sorensen",
     author_email="ludeeus@gmail.com",
     description="A set of helpers for integrations.",
