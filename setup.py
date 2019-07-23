@@ -1,13 +1,12 @@
 """Setup configuration."""
 import setuptools
-from integrationhelper.version import Version
 
 with open("README.md", "r") as fh:
     LONG = fh.read()
 
 setuptools.setup(
     name="integrationhelper",
-    version=Version().version,
+    version="0.0.0",
     author="Joakim Sorensen",
     author_email="ludeeus@gmail.com",
     description="A set of helpers for integrations.",
